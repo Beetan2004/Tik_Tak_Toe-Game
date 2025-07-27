@@ -1,0 +1,74 @@
+/* General body styles */
+body {
+    font-family: 'Inter', sans-serif;
+    touch-action: manipulation; /* Disables double-tap to zoom on mobile */
+}
+
+/* Custom styles for the game board and pieces */
+.board-cell {
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.board-cell:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Styles for the X and O symbols */
+.x-symbol, .o-symbol {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.board-cell.x .x-symbol, .board-cell.o .o-symbol {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Winning line style */
+.win-line {
+    position: absolute;
+    background-color: #10B981; /* Emerald-500 */
+    height: 4px;
+    border-radius: 2px;
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform: scaleX(0);
+    z-index: 10;
+}
+
+.win-line.visible {
+    transform: scaleX(1);
+}
+
+/* Modal styles for game over message */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-backdrop.visible .modal-content {
+    transform: scale(1);
+}
